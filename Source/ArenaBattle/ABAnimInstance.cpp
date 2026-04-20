@@ -51,4 +51,3 @@ void UABAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bIsJumping = bIsFalling & (Velocity.Z > JumpingThreshold);
 	}
 }
-s
