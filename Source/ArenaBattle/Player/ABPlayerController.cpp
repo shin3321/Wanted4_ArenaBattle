@@ -7,9 +7,8 @@ void AABPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// 입력 모드 설정
-	// 게잉ㅁ 시작되면 뷰포트로 바ㅓ로 입력되도ㄽㄱ
+	// 입력 모드 설정.
+	// 게임 시작되면 뷰포트로 바로 입력 되도록.
 	FInputModeGameOnly GameOnlyInputMode;
 	SetInputMode(GameOnlyInputMode);
-	//stsic ConstructorHelpers::FClassFinder<APlayerContolier PlayerConstruct(Text("z"))
 }

@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "ABFountain.generated.h"
 
-// 전방 선언
+// 전방 선언.
 class UStaticMeshComponent;
 
 UCLASS()
@@ -27,7 +27,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	// 컴포넌트 구성
+	// 컴포넌트 구성.
 	UPROPERTY(VisibleAnywhere, Category = "Mesh")
 	TObjectPtr<UStaticMeshComponent> Body;
 

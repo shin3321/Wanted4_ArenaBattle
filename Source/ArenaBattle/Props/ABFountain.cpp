@@ -8,22 +8,21 @@
 AABFountain::AABFountain()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
-	// 컴포넌트 객체 생성
+	// 컴포넌트 객체 생성.
 	Body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
 	Water = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Water"));
 
-	// 루트 컴포넌트 지정
+	// 루트 컴포넌트 지정.
 	RootComponent = Body;
 
-	// Water 컴포넌트 루트의 하위 컴포넌트로 지정
+	// Water 컴포넌트는 루트의 하위 컴포넌트로 지정.
 	Water->SetupAttachment(Body);
+	// 하위 컴포넌트 설정한 후에는 상대 위치 설정해주는 게 좋음.
+	Water->SetRelativeLocation(FVector(0.0f, 0.0f, 132.0f));
 
-	//하위 컴포넌트 설정한 후에는 상대 위치 설정해 주는 게 좋음
-	Water->SetRelativeLocation(FVector(0.0f, 0.0f, 139.0f));
-
-	// 분수대 에셋 검색 후 설정
+	// 분수대 애셋 검색 후 설정.
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> FountainBodyMesh(
 		TEXT("/Game/ArenaBattle/Environment/Props/SM_Plains_Castle_Fountain_01.SM_Plains_Castle_Fountain_01")
 	);
@@ -33,14 +32,14 @@ AABFountain::AABFountain()
 		Body->SetStaticMesh(FountainBodyMesh.Object);
 	}
 
-	// 분수대 에셋 검색 후 설정
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> WaterMesh(
+	// 물 애셋 검색 후 설정.
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> FountainWaterMesh(
 		TEXT("/Game/ArenaBattle/Environment/Props/SM_Plains_Fountain_02.SM_Plains_Fountain_02")
 	);
 
-	if (WaterMesh.Succeeded())
+	if (FountainWaterMesh.Succeeded())
 	{
-		Water->SetStaticMesh(WaterMesh.Object);
+		Water->SetStaticMesh(FountainWaterMesh.Object);
 	}
 }
 
